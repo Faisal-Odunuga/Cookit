@@ -16,7 +16,7 @@ const PizzaDetails = () => {
 
   return (
     <section className="min-h-screen text-[#202223]">
-      <div className="w-3/4 mx-auto pt-10">
+      <div className="w-4/5 lg:w-3/4 mx-auto pt-10">
         {isLoading ? (
           <AiOutlineLoading3Quarters className="animate-spin text-6xl m-auto col-span-4 h-screen" />
         ) : error ? (
