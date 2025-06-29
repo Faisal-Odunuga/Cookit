@@ -5,7 +5,7 @@ const Details = ({ data }) => {
     <div className="w-full grid grid-cols-1 md:grid-cols-3 justify-between gap-4">
       <div className="space-y-6 lg:sticky lg:top-24 self-start h-fit">
         <h1 className="font-bold text-xl">
-          Ingredient ({data?.ingredients.length})
+          Ingredients ({data?.ingredients.length})
         </h1>
         <ol className="list-disc list-inside text-[#202223] text-sm space-y-5">
           {data?.ingredients.map((item) => (
