@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const AllContext = createContext();
@@ -20,7 +20,16 @@ const GlobalContext = ({ children }) => {
     setQuery(value);
   };
 
-  const mealTypes = ["desert", "snack", "lunch", "dinner", "side dish"];
+  const allMealTypes = [
+    "Dessert",
+    "Snack",
+    "Lunch",
+    "Dinner",
+    "Side dish",
+    "Appetizer",
+    "Breakfast",
+    "Beverage",
+  ];
   const toggleSavedDish = (id) => {
     setSavedDishes((prev) => {
       const exists = prev.find((dish) => dish.id === id);
@@ -38,32 +47,9 @@ const GlobalContext = ({ children }) => {
   const handleChangeMealType = (e) => {
     const value = e.target.value;
     if (!value) return;
-    setMealType(value);
+    // setMealType(value);
     navigate(`/meal-type/${value}`);
   };
-
-  useEffect(() => {
-    localStorage.setItem("savedDishes", JSON.stringify(savedDishes));
-  }, [savedDishes]);
-
-  useEffect(() => {
-    if (!query.trim()) return;
-
-    const fetchData = async () => {
-      try {
-        const res = await fetch(
-          `https://dummyjson.com/recipes/search?q=${query}`
-        );
-        const json = await res.json();
-        setDishes(json.recipes);
-      } catch (err) {
-        console.error("Search error:", err);
-        setDishes((prev) => [...prev]);
-      }
-    };
-
-    fetchData();
-  }, [query]);
 
   return (
     <AllContext.Provider
@@ -79,9 +65,9 @@ const GlobalContext = ({ children }) => {
         mealType,
         setMealType,
         handleChangeMealType,
+        allMealTypes,
         filteredMeals,
         setFilteredMeals,
-        mealTypes,
       }}
     >
       {children}

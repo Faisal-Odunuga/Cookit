@@ -7,8 +7,13 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const FilteredDishes = () => {
   const { mealType } = useParams();
-  const { toggleSavedDish, filteredMeals, setFilteredMeals } =
-    useContext(AllContext);
+  const {
+    // setDishes,
+    toggleSavedDish,
+    filteredMeals,
+    setFilteredMeals,
+    setMealType,
+  } = useContext(AllContext);
   const {
     data: res,
     isLoading,
@@ -16,8 +21,10 @@ const FilteredDishes = () => {
   } = useFetch(`https://dummyjson.com/recipes/meal-type/${mealType}`);
   const data = res?.recipes;
   useEffect(() => {
+    // setDishes(data);
+    setMealType(mealType);
     setFilteredMeals(data);
-  }, [setFilteredMeals, data]);
+  }, [setFilteredMeals, data, setMealType, mealType]);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-10">
       {isLoading && (

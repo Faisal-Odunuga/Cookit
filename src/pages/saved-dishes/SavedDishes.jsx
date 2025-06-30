@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AllContext } from "../../hooks/GlobalContext";
 import Dish from "../dish/Dish";
 
 const SavedDishes = () => {
-  const { toggleSavedDish, savedDishes } = useContext(AllContext);
+  const { setQuery, setMealType, toggleSavedDish, savedDishes } =
+    useContext(AllContext);
+  useEffect(() => {
+    setQuery("");
+    setMealType("");
+    localStorage.setItem("savedDishes", JSON.stringify(savedDishes));
+  }, [savedDishes, setQuery, setMealType]);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-10">
       {savedDishes.length === 0 && (

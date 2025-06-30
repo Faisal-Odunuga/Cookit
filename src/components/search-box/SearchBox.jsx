@@ -1,12 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AllContext } from "../../hooks/GlobalContext";
 
 const SearchBox = () => {
-  const { query, handleChangeQuery } = useContext(AllContext);
+  const { query, setDishes, handleChangeQuery } = useContext(AllContext);
+
+  useEffect(() => {
+    if (!query.trim()) return;
+
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          `https://dummyjson.com/recipes/search?q=${query}`
+        );
+        const json = await res.json();
+        setDishes(json.recipes);
+      } catch (err) {
+        console.error("Search error:", err);
+        setDishes((prev) => [...prev]);
+      }
+    };
+
+    fetchData();
+  }, [query, setDishes]);
   return (
     <div>
       <input
-        type="text"
+        type="search"
         placeholder="Search Dishes....."
         value={query}
         onChange={handleChangeQuery}
