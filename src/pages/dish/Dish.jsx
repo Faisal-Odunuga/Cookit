@@ -66,9 +66,13 @@ const Dish = ({ dish, handleToggleSave }) => {
             <Tag tag={tag} key={i} icon />
           ))}
         </div>
-        <button className="bg-yellow-300 w-[90%] mx-auto p-3 rounded-lg">
-          <Link to={`/dishes/${dish.id}`}>View Dish</Link>
-        </button>
+        <div className="">
+          <Link to={`/dishes/${dish.id}`}>
+            <button className="bg-yellow-300 p-3 rounded-lg w-full">
+              View Dish
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

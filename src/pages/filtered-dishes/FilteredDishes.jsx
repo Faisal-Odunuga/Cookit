@@ -24,7 +24,7 @@ const FilteredDishes = () => {
         <AiOutlineLoading3Quarters className="animate-spin text-6xl m-auto col-span-4 h-screen" />
       )}
       {error && <div className="m-auto col-span-4 h-screen">{error}</div>}
-      {filteredMeals.length === 0 && (
+      {filteredMeals?.length === 0 && !isLoading && (
         <div className="m-auto col-span-4 h-screen">No data</div>
       )}
       {filteredMeals?.map((item) => (

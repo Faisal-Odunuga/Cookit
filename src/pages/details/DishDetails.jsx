@@ -7,7 +7,7 @@ import Tag from "../tag/Tag";
 import Intro from "../../components/intro/Intro";
 import Details from "../../components/details/Details";
 
-const PizzaDetails = () => {
+const DishDetails = () => {
   const { id } = useParams();
   const { data, isLoading, error } = useFetch(
     `https://dummyjson.com/recipes/${id}`
@@ -33,4 +33,4 @@ const PizzaDetails = () => {
   );
 };
 
-export default PizzaDetails;
+export default DishDetails;
