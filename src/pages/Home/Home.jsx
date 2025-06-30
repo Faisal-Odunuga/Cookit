@@ -27,10 +27,8 @@ const Home = () => {
     if (data) {
       setQuery("");
       setMealType("");
-
       setDishes(data);
       setFilteredMeals(data);
-      console.log(dishes);
     }
     const searchMeals = dishes.filter((dish) =>
       dish?.name.toLowerCase().includes(query.toLowerCase().trim())
