@@ -11,7 +11,7 @@ const SavedDishes = () => {
     localStorage.setItem("savedDishes", JSON.stringify(savedDishes));
   }, [savedDishes, setQuery, setMealType]);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-10">
+    <div className="dishes-layout">
       {savedDishes.length === 0 && (
         <div className="m-auto col-span-4 h-screen">No data</div>
       )}

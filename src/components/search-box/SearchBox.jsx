@@ -23,13 +23,13 @@ const SearchBox = () => {
     fetchData();
   }, [query, setDishes]);
   return (
-    <div>
+    <div className="w-full">
       <input
         type="search"
         placeholder="Search Dishes....."
         value={query}
         onChange={handleChangeQuery}
-        className="bg-transparent border-2 border-black focus:outline-none text-black text-base font-normal py-2 px-4 rounded-lg placeholder:text-gray-600"
+        className="bg-transparent border-2 border-black focus:outline-none text-black text-base font-normal py-2 px-4 rounded-lg placeholder:text-gray-600 w-full max-w-[50rem]"
       />
     </div>
   );

@@ -23,9 +23,10 @@ const Home = () => {
     toggleSavedDish,
   } = useContext(AllContext);
 
+  useEffect(() => setQuery(""), [setQuery]);
+
   useEffect(() => {
     if (data) {
-      setQuery("");
       setMealType("");
       setDishes(data);
       setFilteredMeals(data);
@@ -34,20 +35,21 @@ const Home = () => {
       dish?.name.toLowerCase().includes(query.toLowerCase().trim())
     );
     setFilteredMeals(searchMeals);
-  }, [data, setDishes, query, dishes, setFilteredMeals, setQuery, setMealType]);
+  }, [data, setDishes, query, dishes, setFilteredMeals, setMealType]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-10">
-      {isLoading && (
-        <AiOutlineLoading3Quarters className="animate-spin text-6xl m-auto col-span-4 h-screen" />
-      )}
-      {error && <div className="m-auto col-span-4 h-screen">{error}</div>}
-      {filteredMeals.length === 0 && (
+    <div className="dishes-layout">
+      {isLoading ? (
+        <AiOutlineLoading3Quarters className="animate-spin text-6xl mx-auto col-span-4 h-screen" />
+      ) : error ? (
+        <div className="m-auto col-span-4 h-screen">{error}</div>
+      ) : filteredMeals.length === 0 ? (
         <div className="m-auto col-span-4 h-screen">No data</div>
+      ) : (
+        filteredMeals.map((item) => (
+          <Dish key={item.id} dish={item} handleToggleSave={toggleSavedDish} />
+        ))
       )}
-      {filteredMeals?.map((item) => (
-        <Dish key={item.id} dish={item} handleToggleSave={toggleSavedDish} />
-      ))}
     </div>
   );
 };

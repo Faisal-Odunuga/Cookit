@@ -26,7 +26,7 @@ const FilteredDishes = () => {
     setFilteredMeals(data);
   }, [setFilteredMeals, data, setMealType, mealType]);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-10">
+    <div className="dishes-layout">
       {isLoading && (
         <AiOutlineLoading3Quarters className="animate-spin text-6xl m-auto col-span-4 h-screen" />
       )}

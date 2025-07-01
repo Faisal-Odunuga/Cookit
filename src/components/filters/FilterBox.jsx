@@ -6,7 +6,7 @@ const FilterBox = () => {
   const { mealType, allMealTypes, handleChangeMealType } =
     useContext(AllContext);
   return (
-    <div className="flex text-black text-base font-normal gap-5">
+    <div className="flex text-black text-base font-normal gap-5 w-full">
       <select
         className="bg-transparent border-2  border-black focus:outline-none rounded-lg"
         value={mealType}
