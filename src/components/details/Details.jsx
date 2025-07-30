@@ -1,8 +1,10 @@
 import React from "react";
 
-const Details = ({ data }) => {
+const Details = ({ data, print }) => {
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-3 justify-between gap-4">
+    <div
+      className={`w-full grid grid-cols-1 md:grid-cols-3 justify-between gap-4 ${print}`}
+    >
       <div className="space-y-6 lg:sticky lg:top-24 self-start h-fit">
         <h1 className="font-bold text-xl">
           Ingredients ({data?.ingredients.length})

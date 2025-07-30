@@ -2,9 +2,11 @@ import React from "react";
 import Tag from "../../pages/tag/Tag";
 import Rating from "../rating/Rating";
 
-const Intro = ({ data }) => {
+const Intro = ({ data, handleDownloadPDF }) => {
   return (
-    <div className="w-full grid grid-cols-1 lg:grid-cols-3 justify-between items-center gap-4">
+    <div
+      className={`w-full grid grid-cols-1 lg:grid-cols-3 justify-between items-center gap-4`}
+    >
       <div className="col-span-1 space-y-8">
         <div className="flex gap-1 gap-x-2 flex-wrap">
           {data?.tags.map((tag, i) => (
@@ -26,6 +28,14 @@ const Intro = ({ data }) => {
             <p className="font-light">Serves</p>
             <p className="font-bold text-xl">{data?.servings}</p>
           </div>
+        </div>
+        <div>
+          <button
+            className="bg-yellow-400 p-3 rounded-lg w-full"
+            onClick={handleDownloadPDF}
+          >
+            Download Recipe
+          </button>
         </div>
       </div>
       <div
