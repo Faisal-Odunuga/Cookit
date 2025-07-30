@@ -32,14 +32,17 @@ const DishDetails = () => {
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.src = data.image;
+    // img.onload = () => {
+    //   html2pdf()
+    //     .set(options)
+    //     .from(element)
+    //     .outputPdf("bloburl")
+    //     .then((pdfUrl) => {
+    //       window.open(pdfUrl, "_blank");
+    //     });
+    // };
     img.onload = () => {
-      html2pdf()
-        .set(options)
-        .from(element)
-        .outputPdf("bloburl")
-        .then((pdfUrl) => {
-          window.open(pdfUrl, "_blank");
-        });
+      html2pdf().set(options).from(element).save();
     };
   };
 
