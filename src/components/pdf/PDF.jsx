@@ -34,14 +34,13 @@ const PDF = ({ data }) => {
           </div>
         </div>
 
-        <div
-          className="h-52 rounded-lg"
-          style={{
-            backgroundImage: `url(${data?.image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        ></div>
+        <div className="col-span-2 h-[10vh] lg:h-full rounded-lg overflow-hidden">
+          <img
+            src={data?.image}
+            alt={data?.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
 
       {/* Details */}
