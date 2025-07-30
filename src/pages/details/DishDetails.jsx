@@ -23,19 +23,24 @@ const DishDetails = () => {
       margin: 0.5,
       filename: `${data.title}.pdf`,
       image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
+      html2canvas: { scale: 2, useCORS: true },
       jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
     };
 
     // html2pdf().set(options).from(element).save();
 
-    html2pdf()
-      .set(options)
-      .from(element)
-      .outputPdf("bloburl")
-      .then((pdfUrl) => {
-        window.open(pdfUrl, "_blank");
-      });
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = data.image;
+    img.onload = () => {
+      html2pdf()
+        .set(options)
+        .from(element)
+        .outputPdf("bloburl")
+        .then((pdfUrl) => {
+          window.open(pdfUrl, "_blank");
+        });
+    };
   };
 
   useEffect(() => {
@@ -59,7 +64,7 @@ const DishDetails = () => {
           <Details data={data} />
         </div>
 
-        <section className="prit-only">
+        <section className="print-only">
           <div ref={recipeRef}>
             <PDF data={data} />
           </div>

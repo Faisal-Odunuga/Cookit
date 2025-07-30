@@ -34,7 +34,7 @@ const PDF = ({ data }) => {
           </div>
         </div>
 
-        <div className="col-span-2 h-[10vh] lg:h-full rounded-lg overflow-hidden">
+        <div className="col-span-2 h-[40vh] w-3/4 rounded-lg overflow-hidden">
           <img
             src={data?.image}
             alt={data?.name}
